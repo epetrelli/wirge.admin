@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
+
+
+  <filter>
+    <filter-name>ObjectifyFilter</filter-name>
+    <filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ObjectifyFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <servlet>
+    <servlet-name>ObjectifyStartupServlet</servlet-name>
+    <servlet-class>it.wirge.data.ObjectifyStartupServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ObjectifyStartupServlet</servlet-name>
+    <url-pattern>/objectify/*</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>RestletServlet</servlet-name>
+    <servlet-class>org.restlet.ext.servlet.ServerServlet</servlet-class>
+    <init-param>
+      <param-name>org.restlet.application</param-name>
+      <param-value>it.wirge.rest.RestletJaxRsApplication</param-value>
+    </init-param>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>RestletServlet</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>manage</web-resource-name>
+      <url-pattern>/manage.html</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+</web-app>
