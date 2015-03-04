@@ -42,36 +42,6 @@
       <scope>provided</scope>
     </dependency>
 
-    <!-- Data -->
-    <dependency>
-      <groupId>com.googlecode.objectify</groupId>
-      <artifactId>objectify</artifactId>
-      <version>5.1.5</version>
-    </dependency>
-
-
-    <!-- Restlet -->
-    <dependency>
-      <groupId>org.restlet.gae</groupId>
-      <artifactId>org.restlet</artifactId>
-      <version>${restlet-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.gae</groupId>
-      <artifactId>org.restlet.ext.jackson</artifactId>
-      <version>${restlet-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.gae</groupId>
-      <artifactId>org.restlet.ext.jaxrs</artifactId>
-      <version>${restlet-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.restlet.gae</groupId>
-      <artifactId>org.restlet.ext.servlet</artifactId>
-      <version>${restlet-version}</version>
-    </dependency>
-
     <!-- Test Dependencies -->
     <dependency>
       <groupId>com.google.appengine</groupId>
@@ -99,7 +69,6 @@
         </includes>
       </resource>
     </resources>
-
 
     <plugins>
 

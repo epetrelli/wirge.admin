@@ -11,303 +11,43 @@
   <!-- endbower -->
   <!-- endbuild -->
 
-  <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="styles/wirge-bootstrap.css">
+  <!-- build:css() styles/manage_main.css -->
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
 
-<body ng-app="WirgeApp">
+<body ng-app="WirgeManageApp">
 
-<div class="container">
-
-  <nav class="navbar navbar-default">
-
+<nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-              aria-expanded="false" aria-controls="navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/"><img src="/images/wirge_logo.png" alt="WIRGE Home Page"></a>
+      <a class="navbar-brand" href="#">Site Management</a>
     </div>
-
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="chi-siamo.html">Chi siamo</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contattaci.html">Contattaci</a></li>
+    <div id="navbar" class="navbar-right navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="#userMessages">Messages</a></li>
       </ul>
     </div>
-
-  </nav>
-</div>
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-    <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <img src="images/something.jpg" alt="">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>e-commerce</h1>
-          <p class="hidden-xs">
-            Le tue esigenze e le nostre tecnologie possono trasformare l'e-commerce in un'esperienza di acquisto completa,
-            <br>dalla ricerca del prodotto alla consegna a casa
-          </p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Guarda come <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="images/something.jpg" alt="">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Integrazione</h1>
-          <p class="hidden-xs">
-            Quando niente è lasciato al caso, i risultati arrivano, e possono avere fattori di crescita elevati.
-            <br>Per questo è indispensabile prevedere e definire ogni processo, automatizzando efficacemente ogni passaggio
-          </p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Vedi come <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="images/something.jpg" alt="">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Gestione</h1>
-          <p class="hidden-xs">
-            Una piattaforma di commercio elettronico è un oggetto complesso: costruirlo richiede competenze ampie ed approfondite.
-            <br>La nostra ricetta richiede che Creatività ed esperienza siano applicate ad ogni singolo dettaglio.
-          </p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Scopri come <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-        </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="images/something.jpg" alt="">
-      <div class="container">
-        <div class="carousel-caption">
-          <h1>Evoluzione</h1>
-          <p class="hidden-xs">
-            Il Mercato, i Clienti e il Business sono in continua evoluzione, e le tecnologie devono seguire e possibilmente anticipare questo trend.
-            <br>Evoluzione è cercare continuamente soluzione migliore per aumentare l'efficacia di tutto il sistema di e-commerce.
-          </p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">Ecco come <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-        </div>
-      </div>
-    </div>
   </div>
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+</nav>
 
 <div class="container">
 
-  <hr>
+  <div ng-view=""></div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <!-- e-commerce -->
-      <div class="col-lg-6 text-center">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Sviluppo piattaforma e-commerce" style="width: 140px; height: 140px;">
-        <h2>e-commerce</h2>
-        <p>La nostra piattaforma di e-commerce è basata sulle tecnologie più avanzate, ma soprattutto è basata sulle tue esigenze.</p>
-        <p><a class="btn btn-default" href="#" role="button">Dettagli <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-      </div>
-
-      <!-- Integrazione -->
-      <div class="col-lg-6 text-center">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Integrazione di sistemi" style="width: 140px; height: 140px;">
-        <h2>Integrazione</h2>
-        <p>Integriamo piattaforme di e-commerce con software gestionali, ma anche social media o strumenti di web marketing.</p>
-        <p><a class="btn btn-default" href="#" role="button">Dettagli <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <!-- Gestione -->
-      <div class="col-lg-6 text-center">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Project Management" style="width: 140px; height: 140px;">
-        <h2>Gestione</h2>
-        <p>Ci occupiamo di ogni singolo dettaglio della gestione di progetti web, orchestrando tutte le competenze necessarie.</p>
-        <p><a class="btn btn-default" href="#" role="button">Dettagli <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-      </div>
-
-      <!-- Evoluzione -->
-      <div class="col-lg-6 text-center">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Evoluzione" style="width: 140px; height: 140px;">
-        <h2>Evoluzione</h2>
-        <p>Seguiamo i nostri progetti tenendoli sempre aggiornati all'evoluzione della rete, alle esigenze del Mercato e dei Clienti.</p>
-        <p><a class="btn btn-default" href="#" role="button">Dettagli <span class="glyphicon glyphicon-chevron-right"></span></a></p>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-md-7">
-      <h2><span class="glyphicon glyphicon-ok"></span> Siamo quelli che "fanno" le cose. <span class="text-muted">We Make.</span></h2>
-      <p class="lead">Curiamo la relizzazione di complessi progetti web in ogni dettaglio: dalla progettazione alla parte grafica, programmazione, integrazione con gli strumenti di pagamento e gli operatori di logistica, ma anche ottimizzazione per i motori di ricerca, campagne di promozione sui motori e sui social network, newsletter, e molto altro ancora...</p>
-    </div>
-    <div class="col-md-5">
-      <img class="img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-md-5">
-      <img class="img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-    </div>
-    <div class="col-md-7">
-      <h2><span class="glyphicon glyphicon-random"></span>&nbsp;&nbsp;Trasformiamo. <span class="text-muted">We Transform.</span></h2>
-      <p class="lead">Ogni buon progetto di commercio off-line è un ottimo candidato per diventare un successo on-line. A noi piace trasformare le idee in progetti, ed i progetti in realtà. Per farlo analizziamo a fondo le idee e le trasformiamo utilizzando le tecnologie più avanzate.</p>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-md-7">
-      <h2><span class="glyphicon glyphicon-cloud"></span> Siamo aperti. <span class="text-muted">We are Open.</span></h2>
-      <p class="lead">Riteniamo che il successo possa essere raggiunto solo prestando attenzione ad ogni singolo dettaglio. Non abbiamo una bacchetta magica, ma scegliamo di volta in volta il modo migliore e la tecnologia più efficace per soddisfare i requisiti del Cliente e del Progetto.</p>
-    </div>
-    <div class="col-md-5">
-      <img class="img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-md-5">
-      <img class="img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-    </div>
-    <div class="col-md-7">
-      <h2><span class="glyphicon glyphicon-th-list"></span> Siamo agili. <span class="text-muted">We are Agile.</span></h2>
-      <p class="lead">Applichiamo la metodologia agile a tutti gli elementi del progetto, non solo lo sviluppo software. Questo ci permette di adattarci rapidamente al cambiamento, effettuando controlli costanti e continui affinamenti, così come ogni vero progetto on-line richiede.</p>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="row">
-    <div class="col-md-7">
-      <h2><span class="glyphicon glyphicon-star-empty"></span> Siamo differenti. <span class="text-muted">We are Different.</span></h2>
-      <p class="lead">La strada del primo è per forza diversa. La nostra strada è dettata dall'esperienza, e l'esperienza ci dice che per non essere uno fra molti bisogna fare qualcosa di nuovo, di migliore, insomma differente.</p>
-    </div>
-    <div class="col-md-5">
-      <img class="img-responsive" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-    </div>
-  </div>
-
-  <hr>
-
-  <div class="well">
-    <h2><span class="glyphicon glyphicon-envelope"></span> Contattaci</h2>
-    <p class="lead">Se ti piace il nostro modo di vivere il web e l'e-commerce, e vuoi approfondire qualche argomento, invia un messaggio, ti contatteremo al più presto:</p>
-    <div data-ng-controller="UserMessageController">
-
-      <form class="form-horizontal" name="userMessageForm">
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="userMessage.nmFromName">Nome</label>
-          <div class="col-sm-6">
-            <input type="text" class="form-control" id="userMessage.nmFromName" ng-model="userMessage.nmFromName" placeholder="Nome" ng-required="true">
-          </div>
-          <div class="col-sm-3"></div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="userMessage.nmFromEMail">Indirizzo e-mail</label>
-          <div class="col-sm-6">
-            <input type="email" class="form-control" id="userMessage.nmFromEMail" ng-model="userMessage.nmFromEMail" placeholder="Indirizzo e-mail" ng-required="true">
-          </div>
-          <div class="col-sm-3"></div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label" for="userMessage.txtMessage">Testo del messaggio</label>
-          <div class="col-sm-6">
-            <textarea
-              class="form-control"
-              rows="5"
-              id="userMessage.txtMessage"
-              data-ng-model="userMessage.txtMessage"
-              placeholder="Testo del messaggio"
-              ng-required="true"></textarea>
-          </div>
-          <div class="col-sm-3"></div>
-        </div>
-
-
-        <div class="form-group">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-6">
-            <span class="small text-muted hidden-xs">compila tutti i campi</span>
-            <button
-              class="btn btn-default pull-right"
-              data-ng-disabled="!userMessageForm.$valid"
-              data-ng-click="sendUserMessage()"><span class="glyphicon glyphicon-send"></span> Invia il messaggio</button>
-          </div>
-          <div class="col-sm-3"></div>
-        </div>
-
-      </form>
-
-      <div class="modal fade" id="userMessageConfirm" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" visible="userMessage.id != null">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="exampleModalLabel"><span class="glyphicon glyphicon-envelope"></span> Messaggio inviato</h4>
-            </div>
-            <div class="modal-body text-center">
-              <br>
-              <br>
-              Grazie, il messaggio è stato inviato e sarai contattato al più presto.
-              <br>
-              <br>
-              <br>
-            </div>
-            <div class="modal-footer">
-              <div class="row">
-                <div class="col-xs-7"></div>
-                <div class="col-xs-5">
-                  <button type="button" class="btn btn-default form-control" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> <span class="hidden-xs">Chiudi</span></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div class="container">
-  <footer class="footer">
-    <p>&copy; 2015 WIRGE &middot; PI 01351660996</p>
+  <footer>
+    <p class="pull-right"><a href="#">Inizio</a></p>
   </footer>
+
 </div>
 
-<!-- build:js scripts/vendor.js -->
+<!-- build:js /manage/scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/es5-shim/es5-shim.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -324,13 +64,14 @@
 <!-- endbower -->
 <!-- endbuild -->
 
-<!-- build:js scripts/scripts.js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="scripts/WirgeApp.js"></script>
-<script src="scripts/WirgeUrlsService.js"></script>
-<script src="scripts/userMessage/UserMessageService.js"></script>
-<script src="scripts/userMessage/UserMessageController.js"></script>
+<!-- build:js /manage/scripts/app.js -->
+<script src="scripts/manage/WirgeManageApp.js"></script>
+<script src="scripts/manage/WirgeManageAppService.js"></script>
+<script src="scripts/manage/WirgeManageAppRouter.js"></script>
+<script src="scripts/manage/userMessage/UserMessageRouter.js"></script>
+<script src="scripts/manage/userMessage/UserMessageService.js"></script>
+<script src="scripts/manage/userMessage/UserMessageController.js"></script>
+<script src="scripts/manage/userMessage/UserMessagesController.js"></script>
 <!-- endbuild -->
 
 </body>
