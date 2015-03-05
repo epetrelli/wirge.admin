@@ -1,42 +1,33 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name WirgeApp.controller:UserMessageController
- * @description
- * # UserMessageController
- * Controller to send messages to the app
- */
-WirgeApp.controller('UserMessageController', ['$scope', 'UserMessageService',
+WirgeManageApp.controller('UserMessageController', ['$scope', '$location', 'UserMessageService', 'resolvedMessage',
 
-  function ($scope, userMessageService) {
+  function ($scope, $location, userMessageService, resolvedMessage) {
 
-    $scope.userMessage = {};
+    $scope.userMessage = resolvedMessage;
 
-    $scope.sendUserMessage = function(){
-      console.log('sendUserMessage()');
-      userMessageService.createMessage($scope.userMessage).$promise.then(function (userMessage) {
-        console.log('success: ' + userMessage);
-        $scope.userMessage = userMessage;
-        $('#userMessageConfirm').modal({show:true});
-        $scope.userMessage = {};
-      }, function (reason) {
-        console.log(reason);
-      });
-    };
+    resolvedMessage.$promise.then(function (resolvedMessage) {
 
-    if($('#mapholder').html()!==undefined){
-      // Map setup:
-      // create a map in the 'map' div, set the view to a given place and zoom
-      var map = L.map('map').setView([45.43, 9.18], 14);
-      L.Icon.Default.imagePath = '/';
-      // add an OpenStreetMap tile layer
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
-      // add a marker in the given location, attach some popup content to it and open the popup
-      L.marker([45.423786, 9.168037]).addTo(map)
-        .bindPopup('<img alt="WIRGE" src="/images/wirge_logo.png">')
-        .openPopup();
-    }
+      console.log("Message loaded: id=" + resolvedMessage.id);
+
+      $scope.deleteMessage = function(userMessage){
+
+        var userMessageTodelete = {};
+        userMessageTodelete.id = userMessage.id;
+
+        userMessageService.deleteMessage({id:userMessage.id}).$promise.then(
+            function () {
+              console.log("Message deleted");
+              $location.path("/userMessages");
+            }, function (reason) {
+              console.log("error deleting message (reason: " + reason + ")");
+            });
+      }
+
+      $scope.backToMessages = function() {
+        $location.path("/userMessages");
+      }
+
+    });
+
   }]);

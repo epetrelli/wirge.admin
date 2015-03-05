@@ -1,0 +1,52 @@
+<h1>Blog Posts</h1>
+
+<form class="form-horizontal well" name="newBlogPostForm" data-ng-show="pageMode=='NEW'">
+  <h2>New Blog Post</h2>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="blogPost.nmTitle">Title</label>
+    <div class="col-sm-8"><input type="text" class="form-control" id="blogPost.nmTitle" data-ng-model="blogPost.nmTitle" placeholder="Titolo" data-ng-required="true"></div>
+    <div class="col-sm-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4 col-xs-6 text-left">
+      <button class="btn btn-default" data-ng-click="cancelNewBlogPost()">
+        <span class="glyphicon glyphicon-backward"></span>
+        <span class="hidden-sm hidden-xs">Cancel</span>
+      </button>
+    </div>
+    <div class="col-sm-4 col-xs-6 text-right">
+      <button class="btn btn-danger" ng-click="createBlogPost()" data-ng-disabled="!newBlogPostForm.$valid">
+        <span class="glyphicon glyphicon-save"></span>
+        <span class="hidden-sm hidden-xs">Save</span>
+      </button>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</form>
+
+<div data-ng-show="pageMode=='LIST'">
+  <button class="btn btn-success pull-right" data-ng-click="newBlogPost()"><span class="glyphicon glyphicon-file"></span> New</button>
+  <br>
+  <br>
+  <table class="table table-hover table-bordered">
+    <!--caption>Optional table caption.</caption-->
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Title</th>
+        <th class="text-center">Public</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr class="hand" ng-repeat="blogPost in blogPosts" >
+      <td ng-click="viewBlogPost(blogPost.idBlogPost);" ng-bind="blogPost.dhCreated | date"></td>
+      <td ng-click="viewBlogPost(blogPost.idBlogPost);" ng-bind="blogPost.nmTitle"></td>
+      <td ng-click="viewBlogPost(blogPost.idBlogPost);" class="text-center">
+        <span class="glyphicon glyphicon-ok" data-ng-show="blogPost.published"></span>
+        <span class="glyphicon glyphicon-remove" data-ng-show="!blogPost.published"></span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
