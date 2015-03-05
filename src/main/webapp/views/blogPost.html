@@ -1,23 +1,51 @@
 <h1>Blog Post</h1>
 <form class="form-horizontal well">
   <div class="form-group">
+    <label class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmTitle"/></div>
+    <div class="col-sm-2"></div>
+  </div>
+  <div class="form-group">
     <label class="col-sm-2 control-label">Date</label>
-    <div class="col-sm-8"><span class="form-control readonly" ng-bind="userMessage.dhCreated | date"></span></div>
+    <div class="col-sm-3">
+      <span class="input-group">
+        <input type="text"
+               class="form-control"
+               datepicker-popup="dd/MM/yy"
+               ng-model="blogPost.dhCreated"
+               is-open="opened"
+               datepicker-options="dateOptions"
+               ng-required="true"
+               close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+      </span>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+      <label class="control-label"><input type="checkbox" ng-model="blogPost.published"> Published</label>
+    </div>
     <div class="col-sm-2"></div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">e-mail</label>
-    <div class="col-sm-8"><a href="mailto:{{userMessage.nmFromEMail}}" class="form-control readonly" ng-bind="userMessage.nmFromEMail"></a></div>
+    <label class="col-sm-2 control-label">Sub-title</label>
+    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmSubtitle"/></div>
     <div class="col-sm-2"></div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">From</label>
-    <div class="col-sm-8"><span class="form-control readonly" ng-bind="userMessage.nmFromName"></span></div>
+    <label class="col-sm-2 control-label">Description</label>
+    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmDescription"/></div>
     <div class="col-sm-2"></div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Message</label>
-    <div class="col-sm-8"><span class="form-control readonly" style="height: 180px;" ng-bind="userMessage.txtMessage"></span></div>
+    <label class="col-sm-2 control-label">Text</label>
+    <div class="col-sm-8">
+      <textarea id="txText" class="form-control" ng-model="blogPost.txText" rows="5"></textarea>
+      <script type="text/javascript">
+        $('#txText').wysihtml5();
+      </script>
+    </div>
     <div class="col-sm-2"></div>
   </div>
   <div class="row">

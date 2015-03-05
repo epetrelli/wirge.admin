@@ -5,6 +5,7 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
   function ($scope, $location, blogPostService, resolvedBlogPost) {
 
     $scope.blogPost = resolvedBlogPost;
+    $scope.opened = false; //datepicker
 
     resolvedBlogPost.$promise.then(function (resolvedBlogPost) {
 
@@ -26,6 +27,8 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
 
       $scope.saveBlogPost = function(blogPost){
 
+        $scope.blogPost.txText = $('#txText').val();
+
         blogPostService.saveBlogPost($scope.blogPost).$promise.then(
           function (blogPost) {
             console.log("BlogPost saved");
@@ -38,6 +41,27 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
       $scope.backToBlogPosts = function() {
         $location.path("/blogPosts");
       }
+
+      // datepicker stuff:
+      $scope.today = function() {
+        $scope.dt = new Date();
+      };
+      $scope.today();
+
+      $scope.datepickerFormat = 'dd/mm/yyyy';
+
+      $scope.open = function($event) {
+        console.log("*");
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.opened = true;
+      };
+
+      $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+      };
+
 
     });
 
