@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-    <application>wirge.admin</application>
-    <version>6</version>
-    <threadsafe>true</threadsafe>
-    
-    <system-properties>
-        <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
-    </system-properties>
+  <application>wirge-it-admin</application>
+  <version>6</version>
+  <threadsafe>true</threadsafe>
+
+  <system-properties>
+    <property name="java.util.logging.config.file" value="WEB-INF/logging.properties"/>
+    <property name="wirge-it-admin.something" value="somevalue" />
+  </system-properties>
+
+  <static-files>
+    <include path="/fonts/**.*" expiration="10d"/>
+    <include path="/images/**.*" expiration="10d"/>
+    <include path="/scripts/**.*" expiration="10d"/>
+    <include path="/styles/**.*" expiration="10d"/>
+    <!-- <exclude path="... /> -->
+  </static-files>
+
+  <resource-files>
+
+  </resource-files>
+
 </appengine-web-app>

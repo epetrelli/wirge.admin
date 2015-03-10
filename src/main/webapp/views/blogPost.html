@@ -1,22 +1,31 @@
 <h1>Blog Post</h1>
-<form class="form-horizontal well">
+<form class="form-horizontal well" name="blogPostForm" novalidate="novalidate" autocomplete="off">
   <div class="form-group">
     <label class="col-sm-2 control-label">Title</label>
-    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmTitle"/></div>
+    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmTitle" ng-required="true"/></div>
     <div class="col-sm-2"></div>
   </div>
   <div class="form-group">
-    <label class="col-sm-2 control-label">Date</label>
+    <label class="col-sm-2 control-label">Link</label>
+    <div class="col-sm-8"><input type="text" class="form-control disabled" ng-model="blogPost.ulLink" disabled/></div>
+    <div class="col-sm-2"></div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="blogPost.dhCreated">Date</label>
     <div class="col-sm-3">
       <span class="input-group">
-        <input type="text"
-               class="form-control"
-               datepicker-popup="dd/MM/yy"
-               ng-model="blogPost.dhCreated"
-               is-open="opened"
-               datepicker-options="dateOptions"
-               ng-required="true"
-               close-text="Close" />
+        <input
+          type="text"
+          class="form-control"
+          datepicker-popup="{{datepickerFormat}}"
+          datepicker-mode="year"
+          id="blogPost.dhCreated"
+          ng-model="blogPost.dhCreated"
+          is-open="opened"
+          ng-required="true"
+          year-range="30"
+          aw-datepicker-pattern="^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$"
+          />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
@@ -30,18 +39,18 @@
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Sub-title</label>
-    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmSubtitle"/></div>
+    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmSubtitle"  ng-required="true"/></div>
     <div class="col-sm-2"></div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmDescription"/></div>
+    <div class="col-sm-8"><input type="text" class="form-control" ng-model="blogPost.nmDescription"  ng-required="true"/></div>
     <div class="col-sm-2"></div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Text</label>
     <div class="col-sm-8">
-      <textarea id="txText" class="form-control" ng-model="blogPost.txText" rows="5"></textarea>
+      <textarea id="txText" class="form-control" ng-model="blogPost.txText.value" rows="5"  ng-required="true"></textarea>
       <script type="text/javascript">
         $('#txText').wysihtml5();
       </script>
@@ -61,7 +70,7 @@
         <span class="glyphicon glyphicon-trash"></span>
         <span class="hidden-sm hidden-xs">Delete</span>
       </button>
-      <button class="btn btn-success" ng-click="saveBlogPost(blogPost)">
+      <button class="btn btn-success" data-ng-disabled="!blogPostForm.$valid" ng-click="saveBlogPost(blogPost)">
         <span class="glyphicon glyphicon-save"></span>
         <span class="hidden-sm hidden-xs">Save</span>
       </button>

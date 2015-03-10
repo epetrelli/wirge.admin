@@ -31,7 +31,7 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
 
         blogPostService.saveBlogPost($scope.blogPost).$promise.then(
           function (blogPost) {
-            console.log("BlogPost saved");
+            console.log("BlogPost saved: new date is " + blogPost.dhCreated);
             $scope.blogPost = blogPost;
           }, function (reason) {
             console.log("error saving (reason: " + reason + ")");
@@ -44,11 +44,10 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
 
       // datepicker stuff:
       $scope.today = function() {
-        $scope.dt = new Date();
+        $scope.blogPost.dhCreated = new Date();
       };
-      $scope.today();
 
-      $scope.datepickerFormat = 'dd/mm/yyyy';
+      $scope.datepickerFormat = 'dd/MM/yyyy';
 
       $scope.open = function($event) {
         console.log("*");
@@ -58,7 +57,7 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
       };
 
       $scope.dateOptions = {
-        formatYear: 'yy',
+        formatYear: 'yyyy',
         startingDay: 1
       };
 
