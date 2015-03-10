@@ -17,18 +17,17 @@
         <input
           type="text"
           class="form-control"
-          datepicker-popup="{{datepickerFormat}}"
-          datepicker-mode="year"
           id="blogPost.dhCreated"
           ng-model="blogPost.dhCreated"
-          is-open="opened"
           ng-required="true"
-          year-range="30"
-          aw-datepicker-pattern="^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$"
+          datepicker-popup="{{datepickerFormat}}"
+          datepicker-mode="year"
+          datepicker-options="dateOptions"
+          is-open="opened"
           />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
       </span>
     </div>
     <div class="col-sm-2"></div>
@@ -50,7 +49,7 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">Text</label>
     <div class="col-sm-8">
-      <textarea id="txText" class="form-control" ng-model="blogPost.txText.value" rows="5"  ng-required="true"></textarea>
+      <textarea id="txText" class="form-control" ng-model="blogPost.txText.value" rows="5"></textarea>
       <script type="text/javascript">
         $('#txText').wysihtml5();
       </script>

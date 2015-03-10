@@ -6,6 +6,7 @@ WirgeManageApp.config(['$routeProvider', '$httpProvider',
   function ($routeProvider, $httpProvider) {
 
     //Converts java dates in json to js-Date
+
     $httpProvider.defaults.transformResponse.push(function (responseData) {
       convertDtFieldsToDates(responseData);
       return responseData;
@@ -13,6 +14,25 @@ WirgeManageApp.config(['$routeProvider', '$httpProvider',
 
   }]);
 
+//*** Temp fix for Angular 1.3 support [#2659](https://github.com/angular-ui/bootstrap/issues/2659)
+WirgeManageApp.directive('datepickerPopup', ['datepickerPopupConfig', 'dateParser', 'dateFilter', function (datepickerPopupConfig, dateParser, dateFilter) {
+  return {
+    'restrict': 'A',
+    'require': '^ngModel',
+    'link': function ($scope, element, attrs, ngModel) {
+      var dateFormat;
+
+      attrs.$observe('datepickerPopup', function(value) {
+        dateFormat = value || datepickerPopupConfig.datepickerPopup;
+        ngModel.$render();
+      });
+
+      ngModel.$formatters.push(function (value) {
+        return ngModel.$isEmpty(value) ? value : dateFilter(value, dateFormat);
+      });
+    }
+  };
+}]);
 
 function convertDtFieldsToDates(input) {
   // Ignore things that aren't objects.
@@ -27,7 +47,7 @@ function convertDtFieldsToDates(input) {
 
     var value = input[key];
 
-    if(key.indexOf("dh")==0){
+    if(key.indexOf("dh")==0 || key.indexOf("dt")==0){
       //console.log("-" + key + "=" + value);
       if(!isNaN(value)) {
         input[key] = new Date(value);

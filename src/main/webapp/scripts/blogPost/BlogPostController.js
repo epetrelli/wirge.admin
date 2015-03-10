@@ -5,17 +5,29 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
   function ($scope, $location, blogPostService, resolvedBlogPost) {
 
     $scope.blogPost = resolvedBlogPost;
-    $scope.opened = false; //datepicker
+
 
     resolvedBlogPost.$promise.then(function (resolvedBlogPost) {
 
-      console.log("BlogPost loaded: id=" + resolvedBlogPost.idBlogPost);
+      console.log("BlogPost loaded: id=" + resolvedBlogPost.idBlogPost + " dhCreated=" + resolvedBlogPost.dhCreated);
+      // datepicker stuff:
+      $scope.datepickerFormat = 'dd/MM/yyyy';
+      $scope.opened = false;
+      $scope.today = function() {
+        $scope.blogPost.dhCreated = new Date();
+      };
+      $scope.open = function($event) {
+        console.log("opening datepicker");
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.opened = true;
+      };
+      $scope.dateOptions = {
+        formatYear: 'yyyy',
+        startingDay: 1
+      };
 
       $scope.deleteBlogPost = function(blogPost){
-
-        var blogPostTodelete = {};
-        blogPostTodelete.idBlogPost = blogPost.idBlogPost;
-
         blogPostService.deleteBlogPost({idBlogPost:blogPost.idBlogPost}).$promise.then(
           function () {
             console.log("BlogPost deleted");
@@ -26,10 +38,8 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
       }
 
       $scope.saveBlogPost = function(blogPost){
-
         $scope.blogPost.txText = $('#txText').val();
-
-        blogPostService.saveBlogPost($scope.blogPost).$promise.then(
+        blogPostService.saveBlogPost(blogPost).$promise.then(
           function (blogPost) {
             console.log("BlogPost saved: new date is " + blogPost.dhCreated);
             $scope.blogPost = blogPost;
@@ -41,26 +51,6 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
       $scope.backToBlogPosts = function() {
         $location.path("/blogPosts");
       }
-
-      // datepicker stuff:
-      $scope.today = function() {
-        $scope.blogPost.dhCreated = new Date();
-      };
-
-      $scope.datepickerFormat = 'dd/MM/yyyy';
-
-      $scope.open = function($event) {
-        console.log("*");
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.opened = true;
-      };
-
-      $scope.dateOptions = {
-        formatYear: 'yyyy',
-        startingDay: 1
-      };
-
 
     });
 
