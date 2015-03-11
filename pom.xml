@@ -176,6 +176,8 @@
         <configuration>
           <enableJarClasses>false</enableJarClasses>
           <port>8081</port>
+          <gcloud_directory>/home/enrico/.m2/repository/com/google/appengine/appengine-tools-sdk/1.9.17a</gcloud_directory>
+
           <!-- Comment in the below snippet to bind to all IPs instead of just localhost -->
           <!-- address>0.0.0.0</address>-->
           <!-- Comment in the below snippet to enable local debugging with a remove debugger

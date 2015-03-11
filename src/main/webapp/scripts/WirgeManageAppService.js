@@ -13,7 +13,7 @@ WirgeManageApp.factory('WirgeManageAppService', ['$location',
       urls.restUrl = 'http://localhost:8080/rest';
     }
     else {
-      urls.restUrl = 'http://www.wirge.it/rest';
+      urls.restUrl = 'http://wirge-it-web.appspot.com/rest';
     }
     return urls;
   }
