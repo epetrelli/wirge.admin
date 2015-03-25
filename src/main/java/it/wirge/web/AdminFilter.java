@@ -45,7 +45,7 @@ public class AdminFilter implements Filter
       if(!cookieFound) {
         UserService userService = UserServiceFactory.getUserService();
         User user = userService.getCurrentUser();
-        Cookie cookie = new Cookie("user", user.getUserId());
+        Cookie cookie = new Cookie("wirge-user", user.getUserId());
         cookie.setDomain("wirge-it-web.appspot.com");
         logger.info("adding cookie " + user.getUserId());
         httpServletResponse.addCookie(cookie);
