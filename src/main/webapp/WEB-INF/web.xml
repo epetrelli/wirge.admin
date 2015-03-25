@@ -11,6 +11,15 @@
     <location>/404.html</location>
   </error-page>
 
+  <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>it.wirge.web.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>manage</web-resource-name>
