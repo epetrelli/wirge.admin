@@ -18,12 +18,12 @@
           type="text"
           class="form-control"
           id="blogPost.dhCreated"
-          ng-model="blogPost.dhCreated"
-          ng-required="true"
-          datepicker-popup="{{datepickerFormat}}"
-          datepicker-mode="year"
-          datepicker-options="dateOptions"
-          is-open="opened"
+          data-ng-model="blogPost.dhCreated"
+          data-ng-required="true"
+          data-datepicker-popup="{{datepickerFormat}}"
+          data-datepicker-mode="year"
+          data-datepicker-options="dateOptions"
+          data-is-open="opened"
           />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
