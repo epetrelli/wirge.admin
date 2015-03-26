@@ -5,7 +5,7 @@ WirgeManageApp.factory('AdminService', ['$resource', 'WirgeManageAppService',
 
     return $resource(wirgeManageAppService.restUrl + '/appAdmin', {}, {
 
-      'getAppAdmin': { method: 'GET', withCredentials: true}
+      'getAppAdmin': { method: 'POST', withCredentials: true}
 
     });
   }]);

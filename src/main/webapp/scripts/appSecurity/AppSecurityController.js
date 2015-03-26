@@ -14,7 +14,7 @@ WirgeManageApp.controller('AppSecurityController', ['$scope', 'UserService', 'Ad
 
         adminService.getAppAdmin(gaeUser).$promise.then(
           function (appAdmin) {
-            console.log("appAdmin found");
+            console.log("appAdmin found: " + appAdmin.email);
             $scope.appAdmin = appAdmin;
           },
           function (reason) {
