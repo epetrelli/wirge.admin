@@ -22,7 +22,7 @@
 
 <body ng-app="WirgeManageApp">
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top" data-ng-controller="AppSecurityController" >
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -34,11 +34,14 @@
       <a class="navbar-brand" href="#">Site Management</a>
     </div>
     <div id="navbar" class="navbar-right navbar-collapse collapse">
-      <p data-ng-controller="AppSecurityController" class="navbar-text">
+      <p class="navbar-text">
+        <span title="Not yet authorized" class="glyphicon glyphicon-ban-circle" data-ng-show="!appAdmin.isAdmin"></span>
+        <span title="Admin" class="glyphicon glyphicon-user" data-ng-show="appAdmin.isAdmin"></span>
         <span data-ng-bind="gaeUser.email"></span>
       </p>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" data-ng-show="appAdmin.isAdmin">
         <li><a href="#blogPosts">Blog Posts</a></li>
+        <li><a href="#admins">Admins</a></li>
         <li><a href="#userMessages">Messages</a></li>
       </ul>
     </div>
