@@ -412,7 +412,7 @@ module.exports = function (grunt) {
     'wiredep',
     'less',
     'useminPrepare',
-    //'concurrent:dist',
+    'concurrent:dist',
 
     'copy:styles',
     'imagemin',
