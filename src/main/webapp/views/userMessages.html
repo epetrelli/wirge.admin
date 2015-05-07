@@ -3,15 +3,13 @@
   <!--caption>Optional table caption.</caption-->
   <thead>
     <tr>
-      <th>From</th>
-      <th>e-mail</th>
+      <th>Message</th>
       <th>Date</th>
     </tr>
   </thead>
   <tbody>
   <tr class="hand" ng-repeat="userMessage in userMessages" >
-    <td ng-click="viewMessage(userMessage.id);" ng-bind="userMessage.nmFromName"></td>
-    <td><a href="mailto:{{userMessage.nmFromEMail}}" ng-bind="userMessage.nmFromEMail"></a></td>
+    <td ng-click="viewMessage(userMessage.id);" ng-bind="userMessage.txtMessage | date"></td>
     <td ng-click="viewMessage(userMessage.id);" ng-bind="userMessage.dhCreated | date"></td>
   </tr>
   </tbody>

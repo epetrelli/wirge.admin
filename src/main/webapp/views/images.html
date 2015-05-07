@@ -1,0 +1,33 @@
+<h1>Images</h1>
+
+  <div class="well">
+    <span class="lead">Load new image:</span>
+
+    <form id="newmemberAccount" class="form-horizontal" enctype="multipart/form-data" role="form">
+
+      <div class="form-group">
+        <label for="fileUpload" class="col-sm-2 control-label">Upload Picture</label>
+        <div class="col-sm-10">
+          <input type="file" name="file" id="fileUpload" onchange="angular.element(this).scope().uploadFile(this.files)"/>
+        </div>
+      </div>
+
+      <button type="submit" ng-click="uploadPicture()" class="btn btn-default pull-right">Submit</button>
+    </form>
+  </div>
+
+<table class="table table-hover table-bordered">
+  <!--caption>Optional table caption.</caption-->
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr class="hand" ng-repeat="userMessage in userMessages" >
+    <td ng-click="viewMessage(userMessage.id);" ng-bind="userMessage.txtMessage | date"></td>
+    <td ng-click="viewMessage(userMessage.id);" ng-bind="userMessage.dhCreated | date"></td>
+  </tr>
+  </tbody>
+</table>
