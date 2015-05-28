@@ -4,9 +4,6 @@ WirgeManageApp.factory('ImageService', ['$resource', 'WirgeManageAppService',
   function ($resource, wirgeManageAppService) {
     return $resource(wirgeManageAppService.restUrl + '/images', {}, {
 
-      // uploadUrl:
-      'getUploadUrl': { method: 'GET', url: wirgeManageAppService.restUrl + '/images/uploadUrl', withCredentials: true},
-
       // all images:
       'getImages': { method: 'GET', withCredentials: true, isArray:true},
 
@@ -14,7 +11,7 @@ WirgeManageApp.factory('ImageService', ['$resource', 'WirgeManageAppService',
       'getImage': { method: 'GET', url: wirgeManageAppService.restUrl + '/images/:key', withCredentials: true},
 
       // Create Image:
-      'createImage': { method: 'POST', withCredentials: true},
+      'createImage': { method: 'POST', withCredentials: true, transformRequest: angular.identity, headers: {'Content-Type': 'multipart/form-data'}},
 
       // Save Image:
       'saveImage': { method: 'PUT', withCredentials: true},

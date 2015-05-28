@@ -1,20 +1,15 @@
 'use strict';
 
-WirgeManageApp.controller('ImagesController', ['$scope', '$location', '$http', 'ImageService', 'resolvedImages',
+WirgeManageApp.controller('ImagesController', ['$scope', '$location', '$http', 'WirgeManageAppService', 'ImageService', 'resolvedImages',
 
-  function ($scope, $location, $http, ImageService, resolvedImages) {
+  function ($scope, $location, $http, wirgeManageAppService, imageService, resolvedImages) {
 
     $scope.images = resolvedImages;
-    $scope.uploadUrl = {};
     $scope.newprofileImage = null;
 
     resolvedImages.$promise.then(function (resolvedImages) {
-      console.log($scope.images.length + " images");
-
-      ImageService.getUploadUrl().$promise.then(function (uploadUrl) {
-        console.log("UploadUrl = " + uploadUrl.url);
-        $scope.uploadUrl = uploadUrl;
-      });
+      $scope.resolvedImages = resolvedImages;
+      console.log("Got " + $scope.resolvedImages.length + " images");
     });
 
     $scope.viewImage = function(key){
@@ -31,20 +26,25 @@ WirgeManageApp.controller('ImagesController', ['$scope', '$location', '$http', '
 
     $scope.uploadPicture = function(){
 
-      console.log("posting to " + $scope.uploadUrl.url + " image " + $scope.newprofileImage);
+      console.log("posting " + $scope.newprofileImage);
 
-      $http.post($scope.uploadUrl.url, $scope.newprofileImage, {
-        headers: {'Content-Type': undefined},
-        transformRequest: angular.identity
+      $http.post(wirgeManageAppService.restUrl + '/images', $scope.newprofileImage, {
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined}
       })
-        .success(function(data){
-          console.log("success");
-          console.log(data);
+        .success(function(){
         })
-        .error(function(data) {
-          console.log("failure");
-          console.log(data);
+        .error(function(){
         });
+      return;
+
+      imageService.createImage($scope.newprofileImage).$promise.then(
+        function (storedImage) {
+          console.log("storedImage created with id " + storedImage.idStoredImage);
+        }, function (reason) {
+          console.log("error creating storedImage (reason: " + reason + ")");
+        });
+
     }
 
 
