@@ -8,7 +8,7 @@ WirgeManageApp.factory('ImageService', ['$resource', 'WirgeManageAppService',
       'getImages': { method: 'GET', withCredentials: true, isArray:true},
 
       // get single Image:
-      'getImage': { method: 'GET', url: wirgeManageAppService.restUrl + '/images/:key', withCredentials: true},
+      'getImage': { method: 'GET', url: wirgeManageAppService.restUrl + '/images/:idStoredImage', withCredentials: true},
 
       // Create Image:
       'createImage': { method: 'POST', withCredentials: true, transformRequest: angular.identity, headers: {'Content-Type': 'multipart/form-data'}},
@@ -17,7 +17,7 @@ WirgeManageApp.factory('ImageService', ['$resource', 'WirgeManageAppService',
       'saveImage': { method: 'PUT', withCredentials: true},
 
       // Delete Image:
-      'deleteImage': { method: 'DELETE', url: wirgeManageAppService.restUrl + '/images/:key', withCredentials: true}
+      'deleteImage': { method: 'DELETE', url: wirgeManageAppService.restUrl + '/images/:idStoredImage', withCredentials: true}
     });
   }]);
 

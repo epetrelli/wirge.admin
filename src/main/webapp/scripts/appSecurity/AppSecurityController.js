@@ -6,6 +6,7 @@ WirgeManageApp.controller('AppSecurityController', ['$scope', 'UserService', 'Ad
 
     $scope.gaeUser = {};
     $scope.appAdmin = {};
+    $scope.appAdmin.isAdmin = false;
 
     userService.getGaeUser().$promise.then(
       function (gaeUser) {

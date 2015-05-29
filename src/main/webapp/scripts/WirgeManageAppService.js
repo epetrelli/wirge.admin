@@ -10,11 +10,12 @@ WirgeManageApp.factory('WirgeManageAppService', ['$location',
     var urls = {};
     urls.appUrl = '/';
     if($location.host().indexOf("localhost")>-1) {
-      urls.restUrl = 'http://localhost:8080/rest';
+      urls.serverUrl = 'http://localhost:8080';
     }
     else {
-      urls.restUrl = 'https://wirge-it-web.appspot.com/rest';
+      urls.serverUrl = 'https://wirge-it-web.appspot.com';
     }
+    urls.restUrl = urls.serverUrl + '/rest';
     return urls;
   }
 ]);
