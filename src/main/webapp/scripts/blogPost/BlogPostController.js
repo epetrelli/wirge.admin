@@ -1,10 +1,13 @@
 'use strict';
 
-WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPostService', 'resolvedBlogPost',
+WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'WirgeManageAppService', 'BlogPostService', 'ImageService', 'resolvedBlogPost',
 
-  function ($scope, $location, blogPostService, resolvedBlogPost) {
+  function ($scope, $location, wirgeManageAppService, blogPostService, imageService, resolvedBlogPost) {
 
     $scope.blogPost = resolvedBlogPost;
+    $scope.resolvedStoredImages = [];
+    $scope.serverUrl = wirgeManageAppService.serverUrl;
+
 
 
     resolvedBlogPost.$promise.then(function (resolvedBlogPost) {
@@ -37,9 +40,9 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
           });
       }
 
-      $scope.saveBlogPost = function(blogPost){
+      $scope.saveBlogPost = function(){
         $scope.blogPost.txText = $('#txText').val();
-        blogPostService.saveBlogPost(blogPost).$promise.then(
+        blogPostService.saveBlogPost($scope.blogPost).$promise.then(
           function (blogPost) {
             console.log("BlogPost saved: new date is " + blogPost.dhCreated);
             $scope.blogPost = blogPost;
@@ -50,6 +53,21 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'BlogPos
 
       $scope.backToBlogPosts = function() {
         $location.path("/blogPosts");
+      }
+
+      $scope.imageChooserOpen = function(){
+        imageService.getImages().$promise.then(function (resolvedStoredImages) {
+          $scope.storedImages = resolvedStoredImages;
+          $('#imageChooser').modal();
+        },
+        function (reason) {
+          console.log(reason);
+        });
+      }
+
+      $scope.selectImage = function(storedImage){
+        $scope.blogPost.storedImages.push(storedImage);
+        // $scope.saveBlogPost(); // Not necessary, as it'll be saved (eventually) by user
       }
 
     });
