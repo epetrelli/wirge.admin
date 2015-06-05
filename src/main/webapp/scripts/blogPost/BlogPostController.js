@@ -55,19 +55,40 @@ WirgeManageApp.controller('BlogPostController', ['$scope', '$location', 'WirgeMa
         $location.path("/blogPosts");
       }
 
-      $scope.imageChooserOpen = function(){
+      $scope.imageChooserSingleOpen = function(){
         imageService.getImages().$promise.then(function (resolvedStoredImages) {
           $scope.storedImages = resolvedStoredImages;
-          $('#imageChooser').modal();
+          $('#imageChooserSingle').modal();
         },
         function (reason) {
           console.log(reason);
         });
       }
 
-      $scope.selectImage = function(storedImage){
+      $scope.imageChooserMultipleOpen = function(){
+        imageService.getImages().$promise.then(function (resolvedStoredImages) {
+            $scope.storedImages = resolvedStoredImages;
+            $('#imageChooserMultiple').modal();
+          },
+          function (reason) {
+            console.log(reason);
+          });
+      }
+
+      $scope.selectImageSingle = function(storedImage){
+        $scope.blogPost.storedImage = storedImage;
+        $('#imageChooserSingle').modal('hide');
+      }
+
+      $scope.selectImageMultiple = function(storedImage){
         $scope.blogPost.storedImages.push(storedImage);
-        // $scope.saveBlogPost(); // Not necessary, as it'll be saved (eventually) by user
+      }
+
+      $scope.deleteImageSingle = function(){
+        $scope.blogPost.storedImage = null;
+      }
+      $scope.deleteImageMultiple = function(image){
+        $scope.blogPost.storedImages.splice($scope.blogPost.storedImages.indexOf(image), 1);
       }
 
     });
