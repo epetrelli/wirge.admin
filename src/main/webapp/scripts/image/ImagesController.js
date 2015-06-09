@@ -31,7 +31,7 @@ WirgeManageApp.controller('ImagesController', ['$scope', '$location', '$http', '
       $scope.errors = [];
 
       $http.post(wirgeManageAppService.restUrl + '/images', $scope.newprofileImage, {
-        transformRequest: angular.identity,
+        //transformRequest: angular.identity,
         headers: {'Content-Type': undefined}
       })
       .success(function () {

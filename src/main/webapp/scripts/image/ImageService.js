@@ -11,7 +11,7 @@ WirgeManageApp.factory('ImageService', ['$resource', 'WirgeManageAppService',
       'getImage': { method: 'GET', url: wirgeManageAppService.restUrl + '/images/:idStoredImage', withCredentials: true},
 
       // Create Image:
-      'createImage': { method: 'POST', withCredentials: true, transformRequest: angular.identity, headers: {'Content-Type': 'multipart/form-data'}},
+      'createImage': { method: 'POST', withCredentials: true},
 
       // Save Image:
       'saveImage': { method: 'PUT', withCredentials: true},
